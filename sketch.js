@@ -1,3 +1,9 @@
+// Bouncing DVD Logo
+// Daniel Shiffman
+// https://thecodingtrain.com/challenges/131-bouncing-dvd-logo.html
+// https://youtu.be/0j86zuqqTlQ
+// https://editor.p5js.org/codingtrain/sketches/S-es-dYVn
+
 let x;
 let y;
 
@@ -9,7 +15,7 @@ let dvd;
 let r, g, b;
 
 function preload() {
-  dvd = loadImage('vex_logo.png');
+  dvd = loadImage('dvd_logo.png');
 }
 
 function setup() {
