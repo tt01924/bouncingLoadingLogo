@@ -15,7 +15,7 @@ let dvd;
 let r, g, b;
 
 function preload() {
-  dvd = loadImage('image (2).png');
+  dvd = loadImage('whiteLogo.png');
 }
 
 function setup() {
