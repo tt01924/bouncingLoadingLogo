@@ -4,6 +4,7 @@
 // https://youtu.be/0j86zuqqTlQ
 // https://editor.p5js.org/codingtrain/sketches/S-es-dYVn
 
+
 let x;
 let y;
 
@@ -14,17 +15,23 @@ let dvd;
 
 let r, g, b;
 
+let startTime;
+
 function preload() {
-  dvd = loadImage('whiteLogo.png');
+  dvd = loadImage('VEXLOGO.png');
 }
 
+// Initialize the setup immediately
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  x = random(width);
-  y = random(height);
-  xspeed = 10;
-  yspeed = 10;
+  x = width / 2 - dvd.width / 2;
+  y = height / 2 - dvd.height / 2;
+  xspeed = 4;
+  yspeed = 4;
   pickColor();
+
+  // Record the start time
+  startTime = millis();
 }
 
 function pickColor() {
@@ -34,32 +41,38 @@ function pickColor() {
 }
 
 function draw() {
-  background(10,1,);
-  // rect(x, y, 80, 60);
-  // Draw the DVD logo
+  background(10, 1);
+  
   tint(r, g, b);
   image(dvd, x, y);
 
-  x = x + xspeed;
-  y = y + yspeed;
+  // Get the current time
+  let currentTime = millis();
+  
+  // Check if 1 second has passed
+  if (currentTime - startTime > 1000) {
+    // Move the image only if more than 1 second has passed
+    x = x + xspeed;
+    y = y + yspeed;
 
-  if (x + dvd.width >= width) {
-    xspeed = -xspeed;
-    x = width - dvd.width;
-    pickColor();
-  } else if (x <= 0) {
-    xspeed = -xspeed;
-    x = 0;
-    pickColor();
-  }
+    if (x + dvd.width >= width) {
+      xspeed = -xspeed;
+      x = width - dvd.width;
+      pickColor();
+    } else if (x <= 0) {
+      xspeed = -xspeed;
+      x = 0;
+      pickColor();
+    }
 
-  if (y + dvd.height >= height) {
-    yspeed = -yspeed;
-    y = height - dvd.height;
-    pickColor();
-  } else if (y <= 0) {
-    yspeed = -yspeed;
-    y = 0;
-    pickColor();
+    if (y + dvd.height >= height) {
+      yspeed = -yspeed;
+      y = height - dvd.height;
+      pickColor();
+    } else if (y <= 0) {
+      yspeed = -yspeed;
+      y = 0;
+      pickColor();
+    }
   }
 }
